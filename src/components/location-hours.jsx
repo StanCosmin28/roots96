@@ -86,7 +86,7 @@ export default function LocationHours() {
                   </h3>
                   <div className="space-y-2">
                     {hours.map((schedule, index) => (
-                      <div key={index} className="flex justify-between">
+                      <div key={index} className="flex justify-between gap-8">
                         <span className="text-muted-foreground">
                           {schedule.day}
                         </span>
@@ -100,21 +100,23 @@ export default function LocationHours() {
               </div>
             </div>
 
-            <div className="bg-card p-6 rounded-lg border border-border">
-              <div className="flex items-start space-x-4">
-                <Phone className="h-6 w-6 text-primary mt-1" />
-                <div>
-                  <h3 className="text-xl font-semibold text-card-foreground mb-2">
-                    Contact
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Phone: 0755 170 093
-                    <br />
-                    {/* Email: hello@roots96.coffee */}
-                  </p>
+            <a href="tel:0755170093">
+              <div className="bg-card p-6 rounded-lg border border-border">
+                <div className="flex items-start space-x-4">
+                  <Phone className="h-6 w-6 text-primary mt-1" />
+                  <div>
+                    <h3 className="text-xl font-semibold text-card-foreground mb-2">
+                      Contact
+                    </h3>
+                    <a href="tel:0755170093" className="text-muted-foreground">
+                      Phone: 0755 170 093
+                      <br />
+                      {/* Email: hello@roots96.coffee */}
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         </div>
       </div>

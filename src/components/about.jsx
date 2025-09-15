@@ -48,7 +48,7 @@ export default function About() {
               alt="Coffee roasting process"
               className="rounded-lg shadow-2xl w-full h-auto"
             />
-            <div className="absolute -bottom-6 -right-4 bg-card p-6 rounded-lg shadow-lg border border-border">
+            <div className="absolute -bottom-6 -right-2 bg-card p-6 rounded-lg shadow-lg border border-border">
               <div className="text-2xl font-bold text-card-foreground italic">
                 "It takes a village
               </div>

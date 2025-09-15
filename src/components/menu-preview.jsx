@@ -67,6 +67,10 @@ const menuItems = [
   },
 ];
 
+function soon(e) {
+  alert("comming soon...!", e);
+}
+
 export default function MenuPreview() {
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -190,6 +194,7 @@ export default function MenuPreview() {
           <button
             size="lg"
             className="bg-primary hover:bg-secondary hover:border-1 hover:border-black border-1 hover:text-black text-primary-foreground px-8 py-3 cursor-pointer hover:scale-90 transition-all duration-200 rounded-md"
+            onClick={soon}
           >
             View Full Menu
           </button>

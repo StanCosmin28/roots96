@@ -86,10 +86,10 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-semibold mb-4">Contact</h3>
             <div className="space-y-2 text-primary-foreground/80">
-              <p>123 Coffee Street</p>
-              <p>Downtown District</p>
-              <p>City, State 12345</p>
-              <p className="mt-4">(555) 123-4567</p>
+              <p>Bulevardul Carol I 1,</p>
+              <p>Iași 700028</p>
+              {/* <p>City, State 12345</p> */}
+              <p className="mt-4">0755 170 093</p>
               <p>hello@roots96.coffee</p>
             </div>
           </div>
