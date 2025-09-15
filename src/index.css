@@ -78,3 +78,32 @@ body {
   color: hsl(var(--foreground));
   font-family: system-ui, -apple-system, sans-serif;
 }
+
+/* Paralax effect */
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* Bounce animation for arrow */
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+  40% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+  60% {
+    transform: translateY(-5px) translateX(-50%);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 2s infinite;
+}

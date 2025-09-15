@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import data from "../Model/data";
 import { ArrowDown } from "lucide-react";
 
@@ -14,16 +15,33 @@ export default function Hero() {
     }
   };
 
+  // Activează animațiile la încărcare
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const elements = document.querySelectorAll(".hero-animate");
+      elements.forEach((el, index) => {
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      });
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       id="home"
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
+      {/* Background Image with Parallax */}
       <div
         className="absolute inset-0 parallax-bg"
         style={{
           backgroundImage: `url(${hero})`,
+          backgroundAttachment: "fixed",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
         }}
       >
         <div className="absolute inset-0 bg-black/40"></div>
@@ -31,13 +49,34 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-        <h1 className="text-6xl md:text-7xl font-bold mb-2 animate-fade-in-up font-serif">
+        <h1
+          className="text-6xl md:text-7xl font-bold mb-2 font-serif hero-animate"
+          style={{
+            opacity: 0,
+            transform: "translateY(30px)",
+            transition: "opacity 1s ease-out, transform 1s ease-out",
+          }}
+        >
           <span className="text-white">Roots96</span>
         </h1>
-        <p className="text-xl md:text-3xl mb-8 animate-fade-in-up opacity-90 leading-relaxed italic">
+        <p
+          className="text-xl md:text-3xl mb-8 opacity-90 leading-relaxed italic hero-animate"
+          style={{
+            opacity: 0,
+            transform: "translateY(30px)",
+            transition: "opacity 1s ease-out 0.2s, transform 1s ease-out 0.2s",
+          }}
+        >
           "healthy is the new cool"
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up">
+        <div
+          className="flex flex-col sm:flex-row gap-4 justify-center hero-animate"
+          style={{
+            opacity: 0,
+            transform: "translateY(30px)",
+            transition: "opacity 1s ease-out 0.4s, transform 1s ease-out 0.4s",
+          }}
+        >
           <button
             onClick={() => scrollToSection("#menu")}
             className="bg-primary hover:bg-secondary hover:text-black text-primary-foreground px-8 py-3 cursor-pointer rounded-sm transition-all duration-300 hover:scale-95"
@@ -46,7 +85,7 @@ export default function Hero() {
           </button>
           <button
             onClick={() => scrollToSection("#about")}
-            className="border border-white text-white hover:bg-white hover:text-black px-8 py-3 bg-transparent cursor-pointer rounded-sm transition-all duration-300 hover:scale-95"
+            className="border-2 border-white text-white hover:bg-white hover:text-black px-8 py-3 bg-transparent cursor-pointer rounded-sm transition-all duration-300 hover:scale-95"
           >
             Our Story
           </button>
@@ -56,7 +95,7 @@ export default function Hero() {
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <ArrowDown
-          className="h-6 w-6 text-white cursor-pointer"
+          className="h-8 w-8 text-white cursor-pointer"
           onClick={() => scrollToSection("#about")}
         />
       </div>
