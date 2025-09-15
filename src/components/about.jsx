@@ -1,4 +1,7 @@
+import data from "../Model/data";
+
 export default function About() {
+  const { ourStory } = { ...data };
   return (
     <section id="about" className="py-20 bg-muted">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -41,7 +44,7 @@ export default function About() {
           </div>
           <div className="relative">
             <img
-              src="/Screenshot 2025-09-14 at 21.36.06.png"
+              src={ourStory}
               alt="Coffee roasting process"
               className="rounded-lg shadow-2xl w-full h-auto"
             />

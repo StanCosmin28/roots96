@@ -1,5 +1,9 @@
 // import { button } from "./ui/button";
+import data from "../Model/data";
 import { ArrowDown } from "lucide-react";
+
+const { hero } = { ...data };
+console.log(hero);
 
 export default function Hero() {
   return (
@@ -11,7 +15,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 parallax-bg"
         style={{
-          backgroundImage: `url('/Screenshot 2025-09-15 at 00.20.32.png')`,
+          backgroundImage: hero,
           // backgroundImage: `url('/Screenshot 2025-09-14 at 21.59.20.png')`,
         }}
       >

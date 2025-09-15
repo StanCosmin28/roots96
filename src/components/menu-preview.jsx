@@ -2,6 +2,9 @@ import { useState } from "react";
 // import { button } from "./ui/button";
 import { X } from "lucide-react";
 
+import data from "../Model/data";
+const { item1, item2, item3, item4 } = { ...data.menu };
+
 const menuItems = [
   {
     name: "Signature Espresso",
@@ -9,7 +12,7 @@ const menuItems = [
     fullDescription:
       "Our Signature Espresso is crafted from single-origin Brazilian beans, roasted to perfection to bring out deep chocolate notes with a smooth caramel finish. Each shot is pulled with precision, ensuring the perfect crema and balanced flavor profile that coffee connoisseurs love.",
     price: "$4.50",
-    image: "/Screenshot 2025-09-14 at 22.12.24.png",
+    image: item1,
     ingredients: [
       "Brazilian Arabica Beans",
       "Dark Roast",
@@ -23,7 +26,7 @@ const menuItems = [
     fullDescription:
       "Our Cold Brew Delight is steeped for 18 hours in cold water, creating an incredibly smooth and less acidic coffee experience. We infuse it with Madagascar vanilla and a touch of organic cream for a refreshing drink that's perfect for warm days or as an afternoon pick-me-up.",
     price: "$5.25",
-    image: "/cold-brew-coffee.png",
+    image: item2,
     ingredients: [
       "Colombian Beans",
       "Madagascar Vanilla",
@@ -38,7 +41,7 @@ const menuItems = [
     fullDescription:
       "The Artisan Latte features our house-made vanilla syrup and locally sourced organic milk, steamed to the perfect microfoam consistency. Each cup is adorned with intricate latte art by our skilled baristas, making it as beautiful as it is delicious. The balance of espresso and milk creates a harmonious flavor experience.",
     price: "$5.75",
-    image: "/Screenshot 2025-09-14 at 22.13.43.png",
+    image: item3,
     ingredients: [
       "Espresso",
       "Organic Milk",
@@ -53,7 +56,7 @@ const menuItems = [
     fullDescription:
       "The Roots96 Special is our signature blend that combines the fruity notes of Ethiopian Yirgacheffe with the rich chocolate tones of Colombian Supremo. This carefully balanced blend represents our commitment to quality and sustainability. Each batch is roasted in-house to bring out the unique characteristics of both regions.",
     price: "$6.00",
-    image: "/specialty-coffee-drink-with-foam-art.jpg",
+    image: item4,
     ingredients: [
       "Ethiopian Yirgacheffe",
       "Colombian Supremo",
@@ -186,7 +189,7 @@ export default function MenuPreview() {
         <div className="text-center mt-12">
           <button
             size="lg"
-            className="bg-primary hover:bg-secondary hover:border-1 hover:border-black border-1 hover:text-black text-primary-foreground px-8 py-3 cursor-pointer hover:scale-90 transition-all duration-200"
+            className="bg-primary hover:bg-secondary hover:border-1 hover:border-black border-1 hover:text-black text-primary-foreground px-8 py-3 cursor-pointer hover:scale-90 transition-all duration-200 rounded-md"
           >
             View Full Menu
           </button>

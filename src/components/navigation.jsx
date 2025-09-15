@@ -1,11 +1,13 @@
-"use client";
-
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+
+import data from "../Model/data";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const { logo } = { ...data };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +50,7 @@ export default function Navigation() {
           <div className="flex items-center space-x-4">
             <img
               className="h-8 w-8 text-primary"
-              src="/roots_96_logo.png"
+              src={logo}
               alt="Roots96 Logo"
             />
             <span className="text-2xl font-bold text-primary font-serif">
