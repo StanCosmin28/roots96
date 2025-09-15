@@ -15,11 +15,25 @@ export default function Hero() {
     }
   };
 
-  // Activează animațiile la încărcare
+  // Parallax effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const parallaxBg = document.querySelector(".parallax-bg");
+      if (parallaxBg) {
+        const scrollPosition = window.scrollY;
+        parallaxBg.style.transform = `translateY(${scrollPosition * 0.5}px)`;
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Content animations
   useEffect(() => {
     const timer = setTimeout(() => {
       const elements = document.querySelectorAll(".hero-animate");
-      elements.forEach((el, index) => {
+      elements.forEach((el) => {
         el.style.opacity = "1";
         el.style.transform = "translateY(0)";
       });
@@ -35,13 +49,13 @@ export default function Hero() {
     >
       {/* Background Image with Parallax */}
       <div
-        className="absolute inset-0 parallax-bg"
+        className="absolute inset-0 parallax-bg will-change-transform"
         style={{
           backgroundImage: `url(${hero})`,
-          backgroundAttachment: "fixed",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
+          imageRendering: "auto", // Ensures sharp rendering
         }}
       >
         <div className="absolute inset-0 bg-black/40"></div>
