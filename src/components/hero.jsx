@@ -15,7 +15,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 parallax-bg"
         style={{
-          backgroundImage: hero,
+          backgroundImage: `url(${hero})`,
           // backgroundImage: `url('/Screenshot 2025-09-14 at 21.59.20.png')`,
         }}
       >

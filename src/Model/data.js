@@ -1,8 +1,8 @@
 const baseURL = "https://stancosmin28.github.io/roots96";
 
 const data = {
+  hero: `${baseURL}/hero.webp`,
   logo: `${baseURL}/roots_96_logo.png`,
-  hero: `${baseURL}/hero.png`,
   ourStory: `${baseURL}/our_story.png`,
   menu: {
     item1: `${baseURL}/coffee1.png`,
