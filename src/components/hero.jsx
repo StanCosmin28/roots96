@@ -1,10 +1,14 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import data from "../Model/data";
 import { ArrowDown } from "lucide-react";
 
 const { hero } = { ...data };
+// Assume a low-resolution placeholder image is available; replace with actual path
+const heroLowRes = `${hero}?lowres`; // Example: append query or use a different low-res image
 
 export default function Hero() {
+  const [isFullResLoaded, setIsFullResLoaded] = useState(false);
+
   const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
@@ -17,7 +21,7 @@ export default function Hero() {
 
   // Parallax effect
   useEffect(() => {
-    const handleScroll = () => {
+    const applyParallax = () => {
       const parallaxBg = document.querySelector(".parallax-bg");
       if (parallaxBg) {
         const scrollPosition = window.scrollY;
@@ -25,8 +29,14 @@ export default function Hero() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    // Apply parallax immediately on load
+    applyParallax();
+
+    // Add scroll event listener
+    window.addEventListener("scroll", applyParallax);
+
+    // Cleanup
+    return () => window.removeEventListener("scroll", applyParallax);
   }, []);
 
   // Content animations
@@ -47,17 +57,25 @@ export default function Hero() {
       id="home"
       className="relative h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image with Parallax */}
-      <div
-        className="absolute inset-0 parallax-bg will-change-transform"
-        style={{
-          backgroundImage: `url(${hero})`,
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover",
-          imageRendering: "auto", // Ensures sharp rendering
-        }}
-      >
+      {/* Background Image with Parallax and Progressive Lazy Loading */}
+      <div className="absolute inset-0 parallax-bg will-change-transform">
+        {/* Low-resolution placeholder */}
+        <img
+          src={heroLowRes}
+          alt="Hero background placeholder"
+          className="w-full h-full object-cover absolute inset-0"
+          style={{ filter: "blur(10px)" }} // Optional: slight blur for placeholder
+        />
+        {/* Full-resolution image */}
+        <img
+          src={hero}
+          alt="Hero background"
+          className={`w-full h-full object-cover absolute inset-0 transition-opacity duration-500 ${
+            isFullResLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          loading="lazy"
+          onLoad={() => setIsFullResLoaded(true)}
+        />
         <div className="absolute inset-0 bg-black/40"></div>
       </div>
 

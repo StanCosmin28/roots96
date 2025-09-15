@@ -78,41 +78,26 @@ body {
   color: hsl(var(--foreground));
   font-family: system-ui, -apple-system, sans-serif;
 }
-
-/* Paralax effect */
-.parallax-bg {
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-/* Parallax effect */
-.parallax-bg {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  will-change: transform;
-  transition: transform 0.1s linear;
-  -webkit-backface-visibility: hidden; /* Prevents flickering on iOS */
-  backface-visibility: hidden;
-}
-
 /* Parallax effect */
 .parallax-bg {
   will-change: transform;
   transition: transform 0.1s linear;
   -webkit-backface-visibility: hidden; /* Prevents flickering on iOS */
   backface-visibility: hidden;
+  transform: translateY(0); /* Explicitly set initial transform */
 }
 
-/* Ensure img inside parallax-bg is properly styled */
+/* Ensure images inside parallax-bg are properly styled */
 .parallax-bg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
   image-rendering: auto; /* Ensures sharp rendering */
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateZ(0); /* Force hardware acceleration */
 }
 
 /* Bounce animation for arrow */
